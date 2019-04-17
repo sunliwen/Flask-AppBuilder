@@ -376,6 +376,8 @@ class SecurityManager(BaseSecurityManager):
             :param view_menu_name:
                 name of the view menu to add
         """
+        if not (permission_name and view_menu_name):
+            return None
         vm = self.add_view_menu(view_menu_name)
         perm = self.add_permission(permission_name)
         pv = self.permissionview_model()
