@@ -297,6 +297,12 @@ class SecurityManager(BaseSecurityManager):
         """
         if not (permission_name and view_menu_name):
             return None
+        pv = self.find_permission_view_menu(
+            permission_name,
+            view_menu_name
+        )
+        if pv:
+            return pv
         vm = self.add_view_menu(view_menu_name)
         perm = self.add_permission(permission_name)
         pv = self.permissionview_model()
